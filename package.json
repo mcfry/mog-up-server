@@ -1,5 +1,9 @@
 {
   "name": "server",
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.x"
+  },
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
@@ -22,6 +26,6 @@
   },
   "scripts": {
     "devserver": "set NODE_ENV=development&& nodemon --require dotenv/config ./server.js",
-    "prod_server": "node ./server.js"
+    "prod_server": "set NODE_ENV=production&& node ./server.js"
   }
 }

@@ -88,7 +88,18 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert("Items", slimmedItemJson, {});
+    console.log("Seeding items into db.");
+    let n = slimmedItemJson.length;
+    for (let i = 0; i < n; i += 1000) {
+      await queryInterface.bulkInsert(
+        "Items",
+        slimmedItemJson.slice(i, i + 1000 < n ? i + 1000 : undefined),
+        {}
+      );
+      console.log("Seeded 1000 items");
+    }
+
+    //await queryInterface.bulkInsert("Items", slimmedItemJson, {});
   },
 
   async down(queryInterface, Sequelize) {

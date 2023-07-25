@@ -20,13 +20,24 @@ const store = {
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
-    console.log(origin);
-    const whitelist = ["http://localhost:3000"];
+    //console.log(origin);
+    const whitelist = [
+      "http://localhost:3000",
+      "localhost:3000",
+      "http://mog-up.onrender.com",
+      "https://mog-up.onrender.com",
+      "mog-up.onrender.com",
+    ];
 
-    if (whitelist.indexOf(origin) !== -1) {
+    if (origin === undefined) {
+      console.log("Server started or origin undefined.");
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
     }
   },
 };
@@ -98,6 +109,8 @@ async function startApolloServer(typeDefs, resolvers) {
     console.log(
       `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
     );
+  } else {
+    console.log(`🚀 Server ready at ${server.graphqlPath}`);
   }
 }
 
