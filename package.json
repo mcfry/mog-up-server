@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-datasource": "^3.3.1",
+    "apollo-server-core": "^3.7.0",
+    "apollo-server-express": "^3.7.0",
+    "aws-sdk": "^2.1135.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "graphql": "^16.5.0",
+    "graphql-scalars": "^1.17.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "devserver": "set NODE_ENV=development&& nodemon --require dotenv/config ./server.js",
+    "prod_server": "node ./server.js"
+  }
+}
